@@ -1,0 +1,176 @@
+# ===========================================
+# DEVELOPMENT ENVIRONMENT - VPS TESTING
+# ===========================================
+# Usage: docker-compose -f docker-compose.development.yml --env-file .env.development --profile dev up -d --scale frontend=3 --scale backend=1
+
+# Logs: docker-compose -f docker-compose.production.yml logs -f
+
+# Set role admin for user
+# docker exec mysql-ielts-dev mysql -u ielts_dev_user -pdev_password_123
+#       ielts_dev_db -e "UPDATE User SET role = 'ADMIN' WHERE username = 'admin'
+#       OR email = 'admin@example.com';"
+
+
+# docker exec -it ielts-exams-prod-mysql-1 sh
+# mysql -u root -p
+# 2000ieltsroot
+# SHOW DATABASES;
+# USE ielts_prod_db;
+# UPDATE User SET role = 'ADMIN' WHERE email = 'admin01@ielts.com';
+# DELETE FROM User WHERE email = 'admin@gmail.com';
+# SELECT id, name, email, role, active FROM User;
+
+
+
+# Environment file: .env.development
+version: '3.8'
+
+services:
+  # MySQL - Development settings with debug
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"  # Expose MySQL port for development debugging
+    volumes:
+      - mysql_data_dev:/var/lib/mysql
+    networks:
+      - ielts-network-dev
+    restart: unless-stopped
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --general-log=1
+      --general-log-file=/var/lib/mysql/general.log
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # PhpMyAdmin for development
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    platform: linux/amd64
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      PMA_ARBITRARY: 1
+    ports:
+      - "${PHPMYADMIN_PORT:-8081}:80"
+    profiles:
+      - dev
+      - debug
+      - default
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - ielts-network-dev
+    restart: unless-stopped
+
+  # Backend - Development with debug features
+  backend:
+    build:
+      context: ./be-ielts-exams
+      dockerfile: Dockerfile
+    environment:
+      - NODE_OPTIONS=--max-old-space-size=384 --inspect=0.0.0.0:9229
+      - NODE_ENV=development
+      - DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_ACCESS_SECRET=${JWT_ACCESS_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - JWT_PASSWORD_RESET_SECRET=${JWT_PASSWORD_RESET_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-1d}
+      - PORT=8228
+      - FRONTEND_URL=${FRONTEND_URL}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+    # ports: # Không publish port, chỉ internal communication
+      # - "${BACKEND_PORT:-8228}:8228"  # Backend chỉ internal
+    expose:
+      - "8228"
+      - "9229"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - ielts-network-dev
+    volumes:
+      - ./be-ielts-exams/uploads:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8228/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "3"
+
+  # Frontend - Development with hot reload
+  frontend:
+    build:
+      context: ./fe-ielts-exams
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_ENVIRONMENT=development
+      - NEXT_PUBLIC_API_URL=/api  # API calls qua nginx proxy
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000  # Public URL qua nginx
+      - BACKEND_API_URL=http://backend:8228  # Internal communication với backend
+    # ports: # Không publish port, chỉ qua nginx
+      # - "${FRONTEND_PORT:-3000}:3000"
+    expose:
+      - "3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - ielts-network-dev
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "2"
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"  # Public access qua nginx
+      - "${BACKEND_PORT:-8228}:8228"  # Backend API qua nginx (for debugging)
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - ielts-network-dev
+    restart: unless-stopped
+
+volumes:
+  mysql_data_dev:
+    driver: local
+
+networks:
+  ielts-network-dev:
+    driver: bridge

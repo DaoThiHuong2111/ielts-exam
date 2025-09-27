@@ -1,0 +1,366 @@
+{
+  "title": "IELTS Academic Listening Test",
+  "totalTimeLimit": 30,
+  "testType": "listening",
+  "metadata": {
+    "totalQuestions": 40
+  },
+  "parts": [
+    {
+      "partNumber": 1,
+      "title": "Beechen Festival",
+      "content": {
+        "title": "BEECHEN FESTIVAL",
+        "audioUrl": "/audio/listening-section-1.mp3"
+      },
+      "questions": [
+        {
+          "id": "l1q1",
+          "type": "TABLE_COMPLETION",
+          "text": "Complete the table below. Write ONE WORD AND/OR A NUMBER for each answer.",
+          "instruction": "BEECHEN FESTIVAL",
+          "tableData": {
+            "headers": ["Date", "Time", "Activity", "Place", "Comments"],
+            "rows": [
+              {
+                "cells": [
+                  "June 19th",
+                  "7 pm",
+                  "Example Concert",
+                  "the park",
+                  ""
+                ],
+                "answers": { "1": "park" }
+              },
+              {
+                "cells": [
+                  "June 20th",
+                  "2:30 pm",
+                  "tour",
+                  "meet at the station",
+                  "includes a visit to an old flour mill"
+                ],
+                "answers": { "2": "30", "3": "station" }
+              },
+              {
+                "cells": [
+                  "June 21st",
+                  "all day",
+                  "children's art competition",
+                  "Beechen Community Centre",
+                  "bring a lunch"
+                ],
+                "answers": { "4": "art", "5": "lunch" }
+              },
+              {
+                "cells": [
+                  "June 21st",
+                  "evening",
+                  "fireworks",
+                  "by the lake",
+                  ""
+                ],
+                "answers": { "6": "lake" }
+              }
+            ]
+          }
+        },
+        {
+          "id": "l1q7",
+          "type": "SENTENCE_COMPLETION",
+          "text": "This year, activities end by 9 pm.",
+          "correctAnswer": "9",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        },
+        {
+          "id": "l1q8",
+          "type": "SENTENCE_COMPLETION",
+          "text": "There won't be any parking in the town center this year.",
+          "correctAnswer": "parking",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        },
+        {
+          "id": "l1q9",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The festival's web address is www.beechen.com.",
+          "correctAnswer": "beechen",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        },
+        {
+          "id": "l1q10",
+          "type": "SENTENCE_COMPLETION",
+          "text": "Festival organizers would like to receive _______ online.",
+          "correctAnswer": "feedback",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        }
+      ]
+    },
+    {
+      "partNumber": 2,
+      "title": "Walking Holiday",
+      "content": {
+        "title": "Walking Holiday",
+        "audioUrl": "/audio/listening-section-2.mp3"
+      },
+      "questions": [
+        {
+          "id": "l2q11",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "Approximately how many passengers does the ferry hold?",
+          "options": [
+            { "id": "a", "text": "160" },
+            { "id": "b", "text": "600" },
+            { "id": "c", "text": "2000" }
+          ],
+          "correctAnswer": "b"
+        },
+        {
+          "id": "l2q12",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "Which items should the tourists pack in a separate bag?",
+          "options": [
+            { "id": "a", "text": "food" },
+            { "id": "b", "text": "reading material" },
+            { "id": "c", "text": "medicine" }
+          ],
+          "correctAnswer": "c"
+        },
+        {
+          "id": "l2q13",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The ferry can accommodate approximately _______ passengers.",
+          "correctAnswer": "600",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        },
+        {
+          "id": "l2q14",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What type of holiday is being described?",
+          "options": [
+            { "id": "a", "text": "Beach holiday" },
+            { "id": "b", "text": "Walking holiday" },
+            { "id": "c", "text": "Cultural holiday" }
+          ],
+          "correctAnswer": "b"
+        },
+        {
+          "id": "l2q15",
+          "type": "SENTENCE_COMPLETION",
+          "text": "Tourists are advised to bring essential items in a _______ bag.",
+          "correctAnswer": "separate",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        },
+        {
+          "id": "l2q16",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What is the recommended preparation for the walking holiday?",
+          "options": [
+            { "id": "a", "text": "Pack heavy clothing" },
+            { "id": "b", "text": "Bring separate bags for essentials" },
+            { "id": "c", "text": "Book ferry tickets in advance" }
+          ],
+          "correctAnswer": "b"
+        },
+        {
+          "id": "l2q17",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The walking holiday includes transportation by _______.",
+          "correctAnswer": "ferry",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        }
+      ]
+    },
+    {
+      "partNumber": 3,
+      "title": "Spain Features",
+      "content": {
+        "title": "Features of Spain",
+        "audioUrl": "/audio/listening-section-3.mp3"
+      },
+      "questions": [
+        {
+          "id": "l3q18",
+          "type": "MULTIPLE_SELECT",
+          "prompt": "Which THREE of the following features of the area in Spain does the speaker talk about?",
+          "instruction": "Choose THREE correct answers.",
+          "options": [
+            { "id": "a", "text": "altitude" },
+            { "id": "b", "text": "coastline" },
+            { "id": "c", "text": "economy" },
+            { "id": "d", "text": "Geology" },
+            { "id": "e", "text": "temperatures" },
+            { "id": "f", "text": "vegetation" },
+            { "id": "g", "text": "wildlife" }
+          ],
+          "maxSelections": 3,
+          "correctAnswer": ["a", "b", "f"]
+        },
+        {
+          "id": "l3q19",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The speaker discusses various geographical features including _______ and climate.",
+          "correctAnswer": "altitude",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        },
+        {
+          "id": "l3q20",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What is the main topic of this section?",
+          "options": [
+            { "id": "a", "text": "Spanish culture" },
+            { "id": "b", "text": "Features of Spain" },
+            { "id": "c", "text": "Spanish history" }
+          ],
+          "correctAnswer": "b"
+        },
+        {
+          "id": "l3q21",
+          "type": "MULTIPLE_SELECT",
+          "prompt": "Which TWO aspects of Spanish geography are most emphasized?",
+          "instruction": "Choose TWO correct answers.",
+          "options": [
+            { "id": "a", "text": "mountains" },
+            { "id": "b", "text": "rivers" },
+            { "id": "c", "text": "coastline" },
+            { "id": "d", "text": "forests" },
+            { "id": "e", "text": "temperatures" },
+            { "id": "f", "text": "wildlife" }
+          ],
+          "maxSelections": 2,
+          "correctAnswer": ["c", "e"]
+        },
+        {
+          "id": "l3q22",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The speaker mentions _______ different geographical features of Spain.",
+          "correctAnswer": "seven",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        },
+        {
+          "id": "l3q23",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What does the speaker focus on when describing Spain?",
+          "options": [
+            { "id": "a", "text": "Political features" },
+            { "id": "b", "text": "Economic features" },
+            { "id": "c", "text": "Geographical features" }
+          ],
+          "correctAnswer": "c"
+        },
+        {
+          "id": "l3q24",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The discussion includes information about Spanish _______.",
+          "correctAnswer": "vegetation",
+          "instruction": "Write ONE WORD AND/OR A NUMBER for each answer."
+        }
+      ]
+    },
+    {
+      "partNumber": 4,
+      "title": "Student Marking Research",
+      "content": {
+        "title": "Student Marking Research",
+        "audioUrl": "/audio/listening-section-4.mp3"
+      },
+      "questions": [
+        {
+          "id": "l4q25",
+          "type": "MATCHING_TABLE",
+          "prompt": "How did the following categories of student markers compare with the rest of the group when marking student presentations?",
+          "instruction": "Choose the correct letter, A, B or C, next to questions . NB You may use any letter more than once.",
+          "tableData": {
+            "headers": ["Categories of student markers", "A", "B", "C"],
+            "options": {
+              "A": "They gave higher marks.",
+              "B": "They gave lower marks.",
+              "C": "Their marks were not significantly different."
+            },
+            "rows": [
+              {
+                "label": "male students marking female presenters",
+                "questionId": "l4q25",
+                "correctAnswer": "B"
+              },
+              {
+                "label": "emale students marking male presenters",
+                "questionId": "l4q26",
+                "correctAnswer": "A"
+              },
+              {
+                "label": "female students marking female presenters",
+                "questionId": "l4q27",
+                "correctAnswer": "C"
+              },
+              {
+                "label": "younger students marking older presenters",
+                "questionId": "l4q28",
+                "correctAnswer": "B"
+              },
+              {
+                "label": "students marking presenters from a different university",
+                "questionId": "l4q29",
+                "correctAnswer": "A"
+              },
+              {
+                "label": "students who had helped set criteria",
+                "questionId": "l4q30",
+                "correctAnswer": "C"
+              },
+              {
+                "label": "older students marking younger presenters",
+                "questionId": "l4q31",
+                "correctAnswer": "A"
+              },
+              {
+                "label": "students marking presenters from the same university",
+                "questionId": "l4q32",
+                "correctAnswer": "C"
+              },
+              {
+                "label": "experienced students marking novice presenters",
+                "questionId": "l4q33",
+                "correctAnswer": "B"
+              },
+              {
+                "label": "students marking presentations in their field of study",
+                "questionId": "l4q34",
+                "correctAnswer": "C"
+              },
+              {
+                "label": "international students marking local presenters",
+                "questionId": "l4q35",
+                "correctAnswer": "A"
+              },
+              {
+                "label": "students who received training in assessment",
+                "questionId": "l4q36",
+                "correctAnswer": "C"
+              },
+              {
+                "label": "graduate students marking undergraduate presentations",
+                "questionId": "l4q37",
+                "correctAnswer": "B"
+              },
+              {
+                "label": "students marking presentations on familiar topics",
+                "questionId": "l4q38",
+                "correctAnswer": "A"
+              },
+              {
+                "label": "part-time students marking full-time presenters",
+                "questionId": "l4q39",
+                "correctAnswer": "C"
+              },
+              {
+                "label": "students with industry experience marking academic presentations",
+                "questionId": "l4q40",
+                "correctAnswer": "B"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

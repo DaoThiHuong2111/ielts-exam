@@ -1,0 +1,20 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/antinomyhq/forge/refs/heads/main/forge.schema.json
+variables:
+  operating_agent: forge
+commands:
+- name: serena
+  description: start with serena tool
+  prompt: |
+    Follow the workflow below to use serena tool
+    1. run command: uvx --from git+https://github.com/oraios/serena serena project index
+    2. If the project is not activated yet, run mcp tool serena activate_project (it can be mcp_serena_tool_activate_project or serena/activate_project) to activate the project
+    3. Run mcp tool serena check_onboarding_performed (it can be mcp_serena_tool_check_onboarding_performed or serena/check_onboarding_performed) to check onboarding
+    4. If not onboarding yet, run mcp tool serena onboarding (it can be mcp_serena_tool_onboarding or serena/onboarding) to onboarding
+model: anthropic/claude-sonnet-4
+custom_rules: |-
+  - Keep source code and files under 500 lines.
+  - If the being generated file is too big, generate small pieces.
+  - Do not refactor code unless necessary. If you need to refactor, please do it in a separate task, only refactor if I ask you to do so.
+  - You can save document as English, but Always respond by Vietnamese in chat.
+  - If unsure, use tools like perplexity, deepwiki and memory-ai to learn about it, after learning if still unsure admit it and let me know
+  - If there is a problem with the codebase like finding a function use serena tool first

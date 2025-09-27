@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String               @id @default(uuid()) @map("id")
+  name                String
+  firstName           String?
+  middleName          String?
+  lastName            String?
+  username            String               @unique
+  email               String               @unique
+  phoneNumber         String?
+  password            String
+  role                UserRole             @default(USER)
+  active              Boolean              @default(true)
+  createdAt           DateTime             @default(now())
+  updatedAt           DateTime?            @updatedAt
+  hashedRt            String?
+  passwordResetTokens PasswordResetToken[]
+  quizSessions        QuizSession[]
+  createdQuizzes      Quiz[]               @relation("QuizCreator")
+  grantedAccess       UserQuizAccess[]     @relation("GrantedAccess")
+  quizAccess          UserQuizAccess[]     @relation("UserAccess")
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid()) @map("id")
+  userId    String
+  token     String   @unique(map: "PasswordResetToken_token_key")
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId], map: "password_reset_tokens_userId_fkey")
+  @@map("password_reset_tokens")
+}
+
+model Quiz {
+  id             String           @id @default(uuid())
+  title          String
+  totalTimeLimit Int
+  testType       TestType
+  metadata       Json
+  isPublished    Boolean          @default(false)
+  isPublic       Boolean          @default(false)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  createdById    String?
+  parts          QuizPart[]
+  quizSessions   QuizSession[]
+  createdBy      User?            @relation("QuizCreator", fields: [createdById], references: [id])
+  userQuizAccess UserQuizAccess[]
+
+  @@index([testType])
+  @@index([isPublished])
+  @@index([isPublic])
+  @@index([createdAt])
+  @@index([createdById], map: "quizzes_createdById_fkey")
+  @@map("quizzes")
+}
+
+model QuizPart {
+  id                String     @id @default(uuid())
+  quizId            String
+  partNumber        Int
+  title             String
+  content           Json
+  dragOptionsGroups Json?
+  questions         Question[]
+  quiz              Quiz       @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  @@unique([quizId, partNumber])
+  @@index([quizId])
+  @@map("quiz_parts")
+}
+
+model Question {
+  id            String       @id @default(uuid())
+  partId        String
+  questionIndex Int
+  questionId    String
+  type          QuestionType
+  data          Json
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+  part          QuizPart     @relation(fields: [partId], references: [id], onDelete: Cascade)
+
+  @@unique([partId, questionIndex])
+  @@unique([partId, questionId])
+  @@index([partId])
+  @@map("questions")
+}
+
+model UserQuizAccess {
+  id            String    @id @default(uuid())
+  userId        String
+  quizId        String
+  grantedBy     String
+  grantedAt     DateTime  @default(now())
+  expiresAt     DateTime?
+  isActive      Boolean   @default(true)
+  grantedByUser User      @relation("GrantedAccess", fields: [grantedBy], references: [id])
+  quiz          Quiz      @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  user          User      @relation("UserAccess", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, quizId])
+  @@index([userId])
+  @@index([quizId])
+  @@index([isActive])
+  @@index([grantedBy], map: "user_quiz_access_grantedBy_fkey")
+  @@map("user_quiz_access")
+}
+
+model QuizSession {
+  id          String    @id @default(uuid())
+  userId      String
+  quizId      String
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+  timeSpent   Int?
+  answers     Json
+  score       Float?
+  isCompleted Boolean   @default(false)
+  quiz        Quiz      @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([quizId])
+  @@index([isCompleted])
+  @@map("quiz_sessions")
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+enum TestType {
+  READING
+  LISTENING
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  TRUE_FALSE_NOTGIVEN
+  SENTENCE_COMPLETION
+  PARAGRAPH_MATCHING_TABLE
+  DRAG_AND_DROP
+  TABLE_COMPLETION
+  MULTIPLE_SELECT
+  MATCHING_TABLE
+}

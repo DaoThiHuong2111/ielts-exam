@@ -1,0 +1,137 @@
+# ===========================================
+# PRODUCTION ENVIRONMENT - VPS DEPLOYMENT
+# ===========================================
+# Usage: docker-compose -f docker-compose.production.yml --env-file .env.production up -d --scale frontend=3 --scale backend=1
+# Logs: docker compose -f docker-compose.production.yml logs -f
+
+
+# clear: docker compose -f docker-compose.production.yml --env-file .env.production down -v --rmi all --remove-orphans 
+# docker system prune -a --volumes -f
+
+version: '3.8'
+services:
+  # MySQL - Production settings
+  mysql:
+    image: mysql:8.0
+    env_file:
+      - .env.production
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data_prod:/var/lib/mysql
+    networks:
+      - ielts-network-prod
+    restart: unless-stopped
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Backend - Production with optimized settings
+  backend:
+    build:
+      context: ./be-ielts-exams
+      dockerfile: Dockerfile
+    environment:
+      - NODE_OPTIONS=--max-old-space-size=512
+      - NODE_ENV=production
+      - DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_ACCESS_SECRET=${JWT_ACCESS_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - JWT_PASSWORD_RESET_SECRET=${JWT_PASSWORD_RESET_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-1d}
+      - PORT=8228
+      - FRONTEND_URL=${FRONTEND_URL}
+      - CORS_ORIGIN=${CORS_ORIGIN}
+    expose:
+      - "8228"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - ielts-network-prod
+    volumes:
+      - ./be-ielts-exams/uploads:/app/uploads
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8228/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20m"
+        max-file: "3"
+
+  # Frontend - Production with SSL support
+  frontend:
+    build:
+      context: ./fe-ielts-exams
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_ENVIRONMENT=production
+      - NEXT_PUBLIC_API_URL=/api  # API calls qua nginx proxy
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000  # Internal Docker URL
+      - BACKEND_API_URL=http://backend:8228  # Internal communication với backend
+    expose:
+      - "3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - ielts-network-prod
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "2"
+
+  # Nginx Reverse Proxy with SSL
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"        # HTTP redirect to HTTPS
+      - "443:443"      # HTTPS traffic
+    volumes:
+      - ./nginx.production.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl  # SSL certificates
+      - certbot-www:/var/www/certbot  # For Let's Encrypt challenges
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - ielts-network-prod
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "2"
+
+volumes:
+  mysql_data_prod:
+  certbot-www:
+
+networks:
+  ielts-network-prod:
+    driver: bridge

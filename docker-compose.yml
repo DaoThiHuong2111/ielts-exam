@@ -1,0 +1,123 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-ielts
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    # ports:  # Removed for security - only internal access
+    #   - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - ielts-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # PhpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin-ielts
+    platform: linux/amd64
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+      PMA_ARBITRARY: 1
+    ports:
+      - "${PHPMYADMIN_PORT:-8080}:80"
+    profiles:
+      - dev
+      - debug
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - ielts-network
+    restart: unless-stopped
+
+  # Backend API (NestJS)
+  backend:
+    build:
+      context: ./be-ielts-exams
+      dockerfile: Dockerfile
+    container_name: ielts-backend
+    # ports:  # Comment out để backend chỉ internal access
+    #   - "${BACKEND_PORT:-8228}:8228"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - DATABASE_URL=mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@mysql:3306/${MYSQL_DATABASE}
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_ACCESS_SECRET=${JWT_ACCESS_SECRET}
+      - JWT_REFRESH_SECRET=${JWT_REFRESH_SECRET}
+      - JWT_PASSWORD_RESET_SECRET=${JWT_PASSWORD_RESET_SECRET}
+      - JWT_EXPIRES_IN=${JWT_EXPIRES_IN:-7d}
+      - PORT=8228
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - ielts-network
+    restart: unless-stopped
+    volumes:
+      - ./be-ielts-exams/uploads:/app/uploads
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8228/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Frontend (Next.js)
+  frontend:
+    build:
+      context: ./fe-ielts-exams
+      dockerfile: Dockerfile
+    container_name: ielts-frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=${NODE_ENV:-production}
+      - BACKEND_API_URL=http://ielts-backend:${BACKEND_INTERNAL_PORT:-8228}
+      - NEXT_PUBLIC_API_URL=/api
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - ielts-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  ielts-network:
+    driver: bridge

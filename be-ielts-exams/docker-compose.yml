@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-ielts
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: app_user
+      MYSQL_PASSWORD: app_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - ielts-network
+    restart: unless-stopped
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin-ielts
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: app_user
+      PMA_PASSWORD: app_pass
+      PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - ielts-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  ielts-network:
+    driver: bridge

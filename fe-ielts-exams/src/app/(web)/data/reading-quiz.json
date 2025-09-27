@@ -1,0 +1,551 @@
+{
+  "title": "IELTS Academic Reading Test",
+  "totalTimeLimit": 15,
+  "testType": "reading",
+  "parts": [
+    {
+      "partNumber": 1,
+      "title": "Basic Information",
+      "content": {
+        "title": "THE DISCOVERY OF A BABY MAMMOTH",
+        "subtitle": "A near-perfect frozen mammoth offers clues to a great vanished species",
+        "paragraphs": [
+          {
+            "label": "A",
+            "text": "On a May morning in 2007, on the Yamal Peninsula in northwestern Siberia, a Nenets reindeer herder named Yuri Khudi stood on a sandbar on the Yuribey River, looking carefully at a diminutive corpse. Although he had never seen such an animal before, Khudi had seen many mammoth tusks over the thick corkscrew shafts that his people found each summer, and this persuaded him the corpse was a baby mammoth. It was eerily well preserved. Apart from its missing hair and toenails, it was perfectly intact. Khudi realised the find might be significant and he knew he couldn't just return home and forget all about it."
+          },
+          {
+            "label": "B",
+            "text": "Mammoths became extinct between 14,000 and 10,000 years ago and since the extinctions coincided with the end of the most recent Ice age, many researchers believe that the primary cause of the great die-off was the sharp rise in temperature, which dramatically altered the vegetation. 'We have strong evidence that the temperature rise played a significant part in their extinction,' says Adrian Lister, a palaeontologist and mammoth expert at London's Natural History Museum."
+          },
+          {
+            "label": "C",
+            "text": "The baby mammoth found by Khudi was subsequently named Lyuba, after his wife. Scientists estimate that Lyuba died when she was between one and two months old. Daniel Fisher, a palaeontologist at the University of Michigan who has become the world's leading expert on Lyuba, believes that the way the baby mammoth died accounts for its remarkable preservation."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "p1q1",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What convinced Khudi that the corpse was a baby mammoth?",
+          "options": [
+            {
+              "id": "a",
+              "text": "Its perfect preservation"
+            },
+            {
+              "id": "b",
+              "text": "His previous experience with mammoth tusks"
+            },
+            {
+              "id": "c",
+              "text": "The location where it was found"
+            },
+            { "id": "d", "text": "Its diminutive size" }
+          ]
+        },
+        {
+          "id": "p1q2",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "The mammoth extinction occurred at the same time as climate change.",
+          "correctAnswer": "TRUE",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p1q3",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The baby mammoth was named _______ by the researchers.",
+          "correctAnswer": "Lyuba",
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p1q4",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The baby mammoth was discovered by _______.",
+          "correctAnswer": "researchers",
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p1q5",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "According to the text, what is the estimated age of Lyuba when she died?",
+          "options": [
+            {"id": "a", "text": "Less than one month old"},
+            {"id": "b", "text": "Between one and two months old"},
+            {"id": "c", "text": "Between two and three months old"},
+            {"id": "d", "text": "More than three months old"}
+          ]
+        },
+        {
+          "id": "p1q6",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "Daniel Fisher discovered the baby mammoth in Siberia.",
+          "correctAnswer": "FALSE",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p1q7",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The baby mammoth was found on the Yamal Peninsula in northwestern Siberia.",
+          "correctAnswer": ["Yamal"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p1q8",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What was missing from the baby mammoth's body?",
+          "options": [
+            {"id": "a", "text": "Hair and toenails"},
+            {"id": "b", "text": "Tusks and hair"},
+            {"id": "c", "text": "Toenails and teeth"},
+            {"id": "d", "text": "Hair and teeth"}
+          ]
+        },
+        {
+          "id": "p1q9",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "Khudi had seen baby mammoths before finding Lyuba.",
+          "correctAnswer": "FALSE",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p1q10",
+          "type": "SENTENCE_COMPLETION",
+          "text": "Mammoth tusks had been found by Khudi's people each summer.",
+          "correctAnswer": "tusks",
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p1q11",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "When did mammoths become extinct?",
+          "options": [
+            {"id": "a", "text": "Between 14,000 and 10,000 years ago"},
+            {"id": "b", "text": "Between 10,000 and 5,000 years ago"},
+            {"id": "c", "text": "Between 20,000 and 14,000 years ago"},
+            {"id": "d", "text": "Less than 10,000 years ago"}
+          ]
+        },
+        {
+          "id": "p1q12",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "Adrian Lister works at Cambridge University.",
+          "correctAnswer": "FALSE",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p1q13",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The extinction of mammoths coincided with the end of the most recent Ice age.",
+          "correctAnswer": ["Ice age"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p1q14",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The baby mammoth Lyuba was found on the Yamal Peninsula by a reindeer herder named Yuri Khudi.",
+          "correctAnswer": "Yamal",
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        }
+      ]
+    },
+    {
+      "partNumber": 2,
+      "title": "Detailed Analysis",
+      "content": {
+        "title": "URBAN PLANNING IN THE 21ST CENTURY",
+        "subtitle": "How cities are adapting to population growth and environmental challenges",
+        "paragraphs": [
+          {
+            "label": "A",
+            "text": "Modern urban planning faces unprecedented challenges as the world's population becomes increasingly urbanized. By 2050, experts predict that nearly 70% of the global population will live in cities, up from approximately 55% today. This rapid urbanization requires innovative approaches to city design, infrastructure development, and resource management."
+          },
+          {
+            "label": "B",
+            "text": "Sustainable development has become a cornerstone of contemporary urban planning. Cities worldwide are implementing green building standards, creating extensive public transportation networks, and developing renewable energy systems. Singapore, for example, has become a leader in sustainable urban development through its comprehensive green building program."
+          },
+          {
+            "label": "C",
+            "text": "Smart city technologies are revolutionizing how urban areas function. Internet of Things (IoT) sensors, artificial intelligence, and big data analytics are being used to optimize traffic flow, reduce energy consumption, and improve public services. Barcelona's smart city initiative has successfully reduced water consumption by 25% through intelligent monitoring systems."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "p2q1",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "According to the passage, what percentage of the global population will live in cities by 2050?",
+          "options": [
+            { "id": "a", "text": "55%" },
+            { "id": "b", "text": "65%" },
+            { "id": "c", "text": "70%" },
+            { "id": "d", "text": "75%" }
+          ]
+        },
+        {
+          "id": "p2q2",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "Singapore has completely eliminated carbon emissions from its buildings.",
+          "correctAnswer": "NOT GIVEN",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p2q3",
+          "type": "SENTENCE_COMPLETION",
+          "text": "Barcelona reduced water consumption by 25% through smart technology.",
+          "correctAnswer": ["25%"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p2q4",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "Which city is mentioned as a leader in sustainable urban development?",
+          "options": [
+            {"id": "a", "text": "Barcelona"},
+            {"id": "b", "text": "Singapore"},
+            {"id": "c", "text": "London"},
+            {"id": "d", "text": "Tokyo"}
+          ]
+        },
+        {
+          "id": "p2q5",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "IoT sensors are used to optimize traffic flow in smart cities.",
+          "correctAnswer": "TRUE",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p2q6",
+          "type": "SENTENCE_COMPLETION",
+          "text": "By 2050, nearly 70% of the global population will live in cities.",
+          "correctAnswer": ["70%"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p2q7",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What technologies are mentioned as part of smart city initiatives?",
+          "options": [
+            {"id": "a", "text": "IoT sensors, AI, and big data analytics"},
+            {"id": "b", "text": "Solar panels, wind turbines, and batteries"},
+            {"id": "c", "text": "GPS tracking, satellite imagery, and drones"},
+            {"id": "d", "text": "Blockchain, cryptocurrency, and cloud computing"}
+          ]
+        },
+        {
+          "id": "p2q8",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "Public transportation networks are part of sustainable development initiatives.",
+          "correctAnswer": "TRUE",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p2q9",
+          "type": "SENTENCE_COMPLETION",
+          "text": "Modern urban planning faces unprecedented challenges due to increasing urbanization.",
+          "correctAnswer": ["unprecedented"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p2q10",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What percentage of the current global population lives in cities?",
+          "options": [
+            {"id": "a", "text": "Approximately 45%"},
+            {"id": "b", "text": "Approximately 55%"},
+            {"id": "c", "text": "Approximately 65%"},
+            {"id": "d", "text": "Approximately 75%"}
+          ]
+        },
+        {
+          "id": "p2q11",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "Barcelona's smart city initiative has been completely unsuccessful.",
+          "correctAnswer": "FALSE",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p2q12",
+          "type": "SENTENCE_COMPLETION",
+          "text": "Cities are implementing green building standards and developing renewable energy systems.",
+          "correctAnswer": ["renewable"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p2q13",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What does the passage suggest about resource management in cities?",
+          "options": [
+            {"id": "a", "text": "It requires innovative approaches"},
+            {"id": "b", "text": "It is no longer necessary"},
+            {"id": "c", "text": "It should be avoided"},
+            {"id": "d", "text": "It is too expensive"}
+          ]
+        }
+      ]
+    },
+    {
+      "partNumber": 3,
+      "title": "Critical Evaluation",
+      "content": {
+        "title": "THE IMPACT OF ARTIFICIAL INTELLIGENCE ON EMPLOYMENT",
+        "subtitle": "Examining the transformation of the job market in the digital age",
+        "paragraphs": [
+          {
+            "label": "A",
+            "text": "Artificial intelligence is fundamentally reshaping the employment landscape across various industries. While some jobs are being automated away, new roles are simultaneously being created that require different skill sets. The key challenge for workers and policymakers is managing this transition effectively to minimize social disruption."
+          },
+          {
+            "label": "B",
+            "text": "Historical precedent suggests that technological revolutions, while initially disruptive, ultimately create more jobs than they eliminate. The Industrial Revolution, for instance, displaced agricultural workers but created numerous manufacturing positions. Similarly, the digital revolution eliminated some traditional roles while spawning entire new industries."
+          },
+          {
+            "label": "C",
+            "text": "Education and retraining programs are crucial for helping workers adapt to the changing job market. Countries like Denmark and Sweden have implemented comprehensive adult education systems that allow workers to continuously update their skills. These programs focus on developing both technical competencies and soft skills that are less likely to be automated."
+          }
+        ]
+      },
+      "questions": [
+        {
+          "id": "p3q1",
+          "type": "PARAGRAPH_MATCHING_TABLE",
+          "text": "a comparison between current technological change and historical precedent",
+          "correctAnswer": "B",
+          "instruction": "Choose the correct letter A-C for each answer.",
+          "paragraphLabels": ["A", "B", "C"]
+        },
+        {
+          "id": "p3q2",
+          "type": "PARAGRAPH_MATCHING_TABLE",
+          "text": "examples of countries with successful worker retraining programs",
+          "correctAnswer": "C",
+          "instruction": "Choose the correct letter A-C for each answer.",
+          "paragraphLabels": ["A", "B", "C"]
+        },
+        {
+          "id": "p3q3",
+          "type": "PARAGRAPH_MATCHING_TABLE",
+          "text": "the main challenge facing workers in the AI era",
+          "correctAnswer": "A",
+          "instruction": "Choose the correct letter A-C for each answer.",
+          "paragraphLabels": ["A", "B", "C"]
+        },
+        {
+          "id": "p3q4",
+          "type": "SENTENCE_COMPLETION",
+          "text": "The Industrial Revolution created numerous manufacturing positions despite displacing agricultural workers.",
+          "correctAnswer": ["Industrial"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p3q5",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "Which countries are mentioned as having successful adult education systems?",
+          "options": [
+            {"id": "a", "text": "Denmark and Norway"},
+            {"id": "b", "text": "Denmark and Sweden"},
+            {"id": "c", "text": "Sweden and Finland"},
+            {"id": "d", "text": "Norway and Finland"}
+          ]
+        },
+        {
+          "id": "p3q6",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "AI will eliminate more jobs than it creates.",
+          "correctAnswer": "NOT GIVEN",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p3q7",
+          "type": "SENTENCE_COMPLETION",
+          "text": "Education programs focus on developing both technical competencies and soft skills.",
+          "correctAnswer": ["soft"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p3q8",
+          "type": "PARAGRAPH_MATCHING_TABLE",
+          "text": "mention of specific programs that help workers update their skills",
+          "correctAnswer": "C",
+          "instruction": "Choose the correct letter A-C for each answer.",
+          "paragraphLabels": ["A", "B", "C"]
+        },
+        {
+          "id": "p3q9",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "According to the passage, what ultimately happens during technological revolutions?",
+          "options": [
+            {"id": "a", "text": "They eliminate more jobs than they create"},
+            {"id": "b", "text": "They create more jobs than they eliminate"},
+            {"id": "c", "text": "They have no net effect on employment"},
+            {"id": "d", "text": "They only affect manual labor jobs"}
+          ]
+        },
+        {
+          "id": "p3q10",
+          "type": "TRUE_FALSE_NOTGIVEN",
+          "text": "The digital revolution eliminated traditional roles while creating new industries.",
+          "correctAnswer": "TRUE",
+          "instruction": "Write TRUE if the statement agrees with the information\nFALSE if the statement contradicts the information\nNOT GIVEN if there is no information on this"
+        },
+        {
+          "id": "p3q11",
+          "type": "SENTENCE_COMPLETION",
+          "text": "Workers and policymakers must manage the AI transition effectively to minimize social disruption.",
+          "correctAnswer": ["social disruption"],
+          "instruction": "Choose NO MORE THAN TWO WORDS from the passage for each answer."
+        },
+        {
+          "id": "p3q12",
+          "type": "PARAGRAPH_MATCHING_TABLE",
+          "text": "information about how AI is changing different industries",
+          "correctAnswer": "A",
+          "instruction": "Choose the correct letter A-C for each answer.",
+          "paragraphLabels": ["A", "B", "C"]
+        },
+        {
+          "id": "p3q13",
+          "type": "MULTIPLE_CHOICE",
+          "prompt": "What type of skills do education programs focus on that are less likely to be automated?",
+          "options": [
+            {"id": "a", "text": "Technical skills only"},
+            {"id": "b", "text": "Soft skills only"},
+            {"id": "c", "text": "Both technical and soft skills"},
+            {"id": "d", "text": "Physical skills only"}
+          ]
+        }
+      ]
+    },
+    {
+      "partNumber": 4,
+      "title": "Drag and Drop Exercise",
+      "content": {
+        "title": "INNOVATION IN BUSINESS ENVIRONMENT",
+        "subtitle": "Understanding business dynamics and innovation processes",
+        "paragraphs": [
+          {
+            "label": "A",
+            "text": "The usual business environment can be found in unusual thoughts and chance events. This unpredictability often leads to breakthrough innovations."
+          },
+          {
+            "label": "B",
+            "text": "Geroki and Markides's book provides comprehensive insights into business strategy and market dynamics."
+          },
+          {
+            "label": "C",
+            "text": "Microsoft is an example of a company which has made a success from someone else's invention, demonstrating how adaptation can be more valuable than original creation."
+          }
+        ]
+      },
+      "sharedDragOptions": [
+        {
+          "id": "opt_a",
+          "label": "A",
+          "text": "can be found in unusual thoughts and chance events."
+        },
+        {
+          "id": "opt_b",
+          "label": "B",
+          "text": "can be taught in business schools."
+        },
+        {
+          "id": "opt_c",
+          "label": "C",
+          "text": "has made a success from someone else's invention."
+        },
+        {
+          "id": "opt_d",
+          "label": "D",
+          "text": "is designed to nurture differences."
+        },
+        {
+          "id": "opt_e",
+          "label": "E",
+          "text": "is unlikely to lead to creative innovation."
+        },
+        {
+          "id": "opt_f",
+          "label": "F",
+          "text": "says that all mistakes are the same."
+        },
+        {
+          "id": "opt_g",
+          "label": "G",
+          "text": "shows that businesses are good at either inventing or selling."
+        },
+        {
+          "id": "opt_h",
+          "label": "H",
+          "text": "suggests ways of increasing the number of mistakes."
+        }
+      ],
+      "questions": [
+        {
+          "id": "p4q1",
+          "type": "DRAG_AND_DROP",
+          "text": "The usual business environment",
+          "correctAnswer": "opt_a",
+          "instruction": "Complete each sentence with the correct ending, A-H, below."
+        },
+        {
+          "id": "p4q2",
+          "type": "DRAG_AND_DROP",
+          "text": "Geroki and Markides's book",
+          "correctAnswer": "opt_g"
+        },
+        {
+          "id": "p4q3",
+          "type": "DRAG_AND_DROP",
+          "text": "Microsoft is an example of a company which",
+          "correctAnswer": "opt_c"
+        },
+        {
+          "id": "p4q4",
+          "type": "DRAG_AND_DROP",
+          "text": "The origin of useful accident",
+          "correctAnswer": "opt_h"
+        },
+        {
+          "id": "p4q5",
+          "type": "DRAG_AND_DROP",
+          "text": "Traditional business education",
+          "correctAnswer": "opt_b"
+        },
+        {
+          "id": "p4q6",
+          "type": "DRAG_AND_DROP",
+          "text": "Standardized corporate culture",
+          "correctAnswer": "opt_e"
+        },
+        {
+          "id": "p4q7",
+          "type": "DRAG_AND_DROP",
+          "text": "Learning from errors",
+          "correctAnswer": "opt_h"
+        },
+        {
+          "id": "p4q8",
+          "type": "DRAG_AND_DROP",
+          "text": "Innovative companies",
+          "correctAnswer": "opt_d"
+        },
+        {
+          "id": "p4q9",
+          "type": "DRAG_AND_DROP",
+          "text": "Research methodology",
+          "correctAnswer": "opt_f"
+        },
+        {
+          "id": "p4q10",
+          "type": "DRAG_AND_DROP",
+          "text": "Business strategy analysis",
+          "correctAnswer": "opt_g"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "totalQuestions": 41
+  }
+}

@@ -20,11 +20,6 @@ be-ielts-exams/keys/
 *.crt
 *.cer
 
-# Key generation files (contain sensitive logic)
-be-ielts-exams/keygen.js
-be-ielts-exams/keygen-decrypt.js
-be-ielts-exams/generate-keys.sh
-
 # ==========================================
 # DEPENDENCIES
 # ==========================================

@@ -174,45 +174,16 @@ describe("SecurityConfig", () => {
   });
 
   describe("validateEnvironment", () => {
-    it("should not throw when all required environment variables are set", () => {
-      process.env.JWT_ACCESS_SECRET = "test-access-secret";
-      process.env.JWT_REFRESH_SECRET = "test-refresh-secret";
-      process.env.JWT_PASSWORD_RESET_SECRET = "test-password-reset-secret";
-
+    it("should not throw since RSA keys validation is handled elsewhere", () => {
       expect(() => {
         SecurityConfig.validateEnvironment();
       }).not.toThrow();
-    });
-
-    it("should throw when required environment variables are missing", () => {
-      delete process.env.JWT_ACCESS_SECRET;
-      delete process.env.JWT_REFRESH_SECRET;
-      delete process.env.JWT_PASSWORD_RESET_SECRET;
-
-      expect(() => {
-        SecurityConfig.validateEnvironment();
-      }).toThrow(
-        "Missing required environment variables: JWT_ACCESS_SECRET, JWT_REFRESH_SECRET, JWT_PASSWORD_RESET_SECRET"
-      );
-    });
-
-    it("should throw when some required environment variables are missing", () => {
-      process.env.JWT_ACCESS_SECRET = "test-access-secret";
-      delete process.env.JWT_REFRESH_SECRET;
-      delete process.env.JWT_PASSWORD_RESET_SECRET;
-
-      expect(() => {
-        SecurityConfig.validateEnvironment();
-      }).toThrow("Missing required environment variables: JWT_REFRESH_SECRET, JWT_PASSWORD_RESET_SECRET");
     });
 
     it("should warn about missing production-specific environment variables", () => {
       const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
 
       process.env.NODE_ENV = "production";
-      process.env.JWT_ACCESS_SECRET = "test-access-secret";
-      process.env.JWT_REFRESH_SECRET = "test-refresh-secret";
-      process.env.JWT_PASSWORD_RESET_SECRET = "test-password-reset-secret";
       delete process.env.FRONTEND_URL;
       delete process.env.COOKIE_DOMAIN;
 
@@ -230,9 +201,6 @@ describe("SecurityConfig", () => {
       const consoleWarnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
 
       process.env.NODE_ENV = "development";
-      process.env.JWT_ACCESS_SECRET = "test-access-secret";
-      process.env.JWT_REFRESH_SECRET = "test-refresh-secret";
-      process.env.JWT_PASSWORD_RESET_SECRET = "test-password-reset-secret";
       delete process.env.FRONTEND_URL;
       delete process.env.COOKIE_DOMAIN;
 

@@ -13,10 +13,12 @@ const mockedArgon = argon as jest.Mocked<typeof argon>;
 // Mock configuration
 jest.mock("../../config/configuration", () => ({
   default: {
-    accessTokenSecret: "test-access-secret",
-    refreshTokenSecret: "test-refresh-secret",
-    accessTokenExpires: "15m",
-    refreshTokenExpires: "7d"
+    jwt: {
+      privateKey: Buffer.from("test-private-key"),
+      publicKey: Buffer.from("test-public-key"),
+      accessTokenExpires: "15m",
+      refreshTokenExpires: "7d"
+    }
   }
 }));
 

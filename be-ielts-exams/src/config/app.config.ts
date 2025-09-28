@@ -41,15 +41,7 @@ export const appConfig = {
   // Database port riêng biệt nếu cần
   databasePort: parseInt(process.env.DATABASE_PORT || '3306'),
 
-  // JWT configuration
-  jwt: {
-    accessSecret: process.env.JWT_ACCESS_SECRET || 'your-secret-key-change-in-production',
-    refreshSecret: process.env.JWT_REFRESH_SECRET || 'your-refresh-secret-key-change-in-production',
-    passwordResetSecret: process.env.JWT_PASSWORD_RESET_SECRET || 'your-password-reset-secret-change-in-production',
-    accessExpiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m',
-    refreshExpiresIn: process.env.JWT_REFRESH_EXPIRES_IN || '7d',
-    passwordResetExpiresIn: process.env.JWT_PASSWORD_RESET_EXPIRES_IN || '1h',
-  },
+
 
   // Security configuration
   bcrypt: {

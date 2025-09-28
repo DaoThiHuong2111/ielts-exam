@@ -119,13 +119,8 @@ export class SecurityConfig {
    * Validate environment variables for security
    */
   static validateEnvironment() {
-    const requiredEnvVars = ["JWT_ACCESS_SECRET", "JWT_REFRESH_SECRET", "JWT_PASSWORD_RESET_SECRET"];
-
-    const missingVars = requiredEnvVars.filter((varName) => !process.env[varName]);
-
-    if (missingVars.length > 0) {
-      throw new Error(`Missing required environment variables: ${missingVars.join(", ")}`);
-    }
+    // RSA keys validation is handled in configuration.ts
+    // No JWT secrets needed anymore since we use RSA keys
 
     if (process.env.NODE_ENV === "production") {
       if (!process.env.FRONTEND_URL) {
